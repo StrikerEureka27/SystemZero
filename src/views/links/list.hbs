@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        {{#each  links}}
+                <div class="col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <a href="{{url}}" target="_blank">
+                                <div class="card-title">
+                                    {{title}}
+                                </div>
+                            </a>
+                            <p class="m-2" >{{description}}</p>
+                            <p class="m-2" >{{timeago created_at}}</p>
+                            <a href="/links/delete/{{id}}" class="btn btn-danger">Delete</a>
+                            <a href="/links/edit/{{id}}" class="btn btn-info" >Edit</a>
+                        </div>
+                    </div>
+                </div>
+                {{else}}
+                <div class="col-md-4 mx-auto">
+                    <div class="card card-body text-center">
+                        <p>The feed is empty, add a link!</p>
+                        <a class="btn btn-success" href="/links/add">Create</a>
+                    </div>
+                </div>
+            {{/each}}
+    </div>
+</div>

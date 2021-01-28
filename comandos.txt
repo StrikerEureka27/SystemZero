@@ -1,0 +1,19 @@
+Comandos utlizados en el proyecto:
+
+Proyecto:
+
+npm init --yes : Inicializar el proyecto. 
+
+Dependecncias: 
+
+npm install express: Framwork para el servidor. 
+npm installl express-handlebars : Es un montor de plantillas. 
+npm install express-session: Administra sesiones de nuestra app, para las autentificacion de usuarios. 
+npm install mysql: Nos permite conectarnos a la base de datos. 
+npm install express-mysql-session: Este nos permite almacenar los datos de la session pero en bd (ideal para produccion)
+npm install morgan: Nos permite ver las peticiones HTTP que llegan del navegador. 
+npm install bcryptjs: Este modulo nos permite cifrar las contrasenias antes de almacenarlas en la bd. 
+npm install passport: Es un modulo de autentificacion y manejoi de login de un usuario. 
+npm install passport-local: Es un complemento de passport para autenticar a los usuarios con nuestra propia bd. 
+npm install timeago.js: Para manejo de tiempos. 
+npm install connect-flash: Para mostrar mensajes de exito o error al usuario. 
