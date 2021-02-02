@@ -3,8 +3,9 @@ const router = express.Router();
 
 const db = require('../database.js');
 const { route } = require('./routing.js');
+const { isLoggedIn } = require('../lib/auth.js')
 
-router.get('/add', (req, res)=>{
+router.get('/add',isLoggedIn, (req, res)=>{
     res.render('links/add');
 })
 
@@ -13,26 +14,27 @@ router.post('/add', async (req, res)=> {
     const newLink = {
         title: title, 
         url: url, 
-        description: description
+        description: description,
+        user_id: req.user.id
     }
     await db.query('INSERT INTO links set ?', [newLink]);
     req.flash('success', 'Link added succesfully')
     res.redirect('/links');
 })
 
-router.get('/delete/:id', async (req, res)=>{
+router.get('/delete/:id',isLoggedIn, async (req, res)=>{
     const { id } = req.params;
     await db.query('DELETE FROM links WHERE id=?', [id]);
     req.flash('success', 'Link deleted succesfully')
     res.redirect('/links');
 })
 
-router.get('/', async (req, res)=> {
-    const links = await db.query('SELECT * FROM links');
+router.get('/',isLoggedIn, async (req, res)=> {
+    const links = await db.query('SELECT * FROM links WHERE user_id = ?', [req.user.id]);
     res.render('links/list',{links: links})
 })
 
-router.get('/edit/:id', async (req, res)=> {
+router.get('/edit/:id',isLoggedIn, async (req, res)=> {
     const {id} = req.params;
     const dataLink = await db.query('SELECT * FROM links WHERE id=?', [id]);
     console.log(dataLink[0]);

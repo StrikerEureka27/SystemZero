@@ -54,17 +54,18 @@ app.use(session({
   }) // Donde se almacena 
 }))
 
-app.use((req, res, next)=>{
-     app.locals.success = req.flash('success');
-     app.locals.message = req.flash('message');
-     app.locals.user =  req.user; 
-     console.log(req.user)
-    next();
-})
-
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use((req, res, next)=>{
+  app.locals.success = req.flash('success');
+  app.locals.message = req.flash('message');
+  app.locals.user =  req.user; 
+  //console.log(req.user)
+ next();
+})
+
 
 
 //Routing

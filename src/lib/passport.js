@@ -55,10 +55,12 @@ passport.serializeUser(function(user, done) {
   passport.deserializeUser(async (id, done) => {
     try {
       let user = await db.query('SELECT * FROM users WHERE id =?', [id]);
-      if (!user) {
+      if (user.length>0) {
+        done(null, user[0]);
+      }else{
         return done(new Error('user not found'));
       }
-      done(null, user);
+      
     } catch (e) {
       done(e);
     }
