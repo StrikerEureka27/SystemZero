@@ -1,7 +1,7 @@
 module.exports = database = {
     host: 'localhost', 
     user: 'root', 
-    password: 'Pablo092100$98', 
+    password: '', 
     database: 'database_links', 
     insecureAuth : true
 };
