@@ -49,7 +49,7 @@ app.use(session({
   store: new MySQLStore({
     host: 'localhost', 
     user: 'root', 
-    password: 'Pablo092100$98', 
+    password: 'nover', 
     database: 'database_links', 
   }) // Donde se almacena 
 }))
